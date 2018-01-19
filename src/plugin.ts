@@ -18,14 +18,41 @@ export class CloudFormationResourceCounterPlugin {
     );
   }
 
-  private fetch(): Promise<StackResourceListResponse> {
+  private fetch(request): Promise<StackResourceListResponse> {
     return this.serverless.getProvider('aws').request(
       'CloudFormation',
       'listStackResources',
-      { StackName: this.stackName },
+      request,
       this.serverless.getProvider('aws').getStage(),
       this.serverless.getProvider('aws').getRegion()
     );
+  }
+
+  private async fetchStackResources(): Promise<StackResource[]> {
+    let stackResources: StackResource[] = [];
+    let result: StackResourceListResponse = await this.fetch({StackName: this.stackName });
+    result.StackResourceSummaries.forEach((stackItem: StackResource) => {
+       stackResources.push(stackItem);
+    });
+
+    let morePages = result.NextToken ? true : false;
+  
+    while(morePages) {
+        const request = {
+           StackName: this.stackName,
+           NextToken: result.NextToken
+        };
+
+        result = await this.fetch(request);
+        result.StackResourceSummaries.forEach((stackItem: StackResource) => {
+          stackResources.push(stackItem);
+       });
+   
+       morePages = result.NextToken ? true : false;
+    }
+
+    return Promise.all(stackResources);
+
   }
 
   private count(resources: StackResource[]): number {
@@ -34,9 +61,9 @@ export class CloudFormationResourceCounterPlugin {
 
   private process() {
     Promise.resolve()
-    .then(() => this.fetch())
-    .then((response: StackResourceListResponse) => {
-      const message = util.format('CloudFormation resource count: %d', this.count(response.StackResourceSummaries));
+    .then(() => this.fetchStackResources())
+    .then((response: StackResource[]) => {
+      const message = util.format('CloudFormation resource count: %d', this.count(response));
       this.serverless.cli.log(message);
     })
     .catch((error) => this.serverless.cli.log(util.format('Cannot count: %s!', error.message)));

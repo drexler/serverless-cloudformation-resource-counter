@@ -10,8 +10,8 @@ declare interface StackResourceListResponse {
     ResponseMetadata: {
         RequestId: string
     }
-
     StackResourceSummaries: StackResource[]
+    NextToken?: string
 }
 
 
