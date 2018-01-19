@@ -34,10 +34,12 @@ export default class CloudFormationResourceCounterPlugin {
 
   private process() {
     Promise.resolve()
-    .then(() => this.fetch()
-    ).then((res: StackResourceListResponse) => this.serverless.cli.log(util.format('CloudFormation resource count: %d', this.count(res.StackResourceSummaries)))
-    ).catch((err) => this.serverless.cli.log(util.format('Cannot count: %s!', err.message))
-    );
+    .then(() => this.fetch())
+    .then((response: StackResourceListResponse) => {
+      const message = util.format('CloudFormation resource count: %d', this.count(response.StackResourceSummaries));
+      this.serverless.cli.log(message);
+    })
+    .catch((error) => this.serverless.cli.log(util.format('Cannot count: %s!', error.message)));
   }
 
 }
