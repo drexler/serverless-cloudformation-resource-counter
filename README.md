@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/serverless-cloudformation-resource-counter.svg)](https://www.npmjs.com/package/serverless-cloudformation-resource-counter)
 [![license](https://img.shields.io/github/license/drexler/serverless-cloudformation-resource-counter.svg)](https://github.com/drexler/serverless-cloudformation-resource-counter/blob/master/LICENSE.md)
 
-A [serverless](https://serverless.com) plugin to count the resources generated in the AWS CloudFormation Stack after deployment.
+A [serverless](https://serverless.com) plugin to count the resources generated in the AWS CloudFormation stack after deployment.
 
 ## Usage
 
