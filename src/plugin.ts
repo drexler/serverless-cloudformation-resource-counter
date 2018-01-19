@@ -18,7 +18,7 @@ export default class CloudFormationResourceCounterPlugin {
     );
   }
 
-  private fetch(): Promise<any> {
+  private fetch(): Promise<StackResourceListResponse> {
     return this.serverless.getProvider('aws').request(
       'CloudFormation',
       'listStackResources',
@@ -35,7 +35,7 @@ export default class CloudFormationResourceCounterPlugin {
   private process() {
     Promise.resolve()
     .then(() => this.fetch()
-    ).then((res) => this.serverless.cli.log(util.format('CloudFormation resource count: %s', JSON.stringify(res)))
+    ).then((res: StackResourceListResponse) => this.serverless.cli.log(util.format('CloudFormation resource count: %d', this.count(res.StackResourceSummaries)))
     ).catch((err) => this.serverless.cli.log(util.format('Cannot count: %s!', err.message))
     );
   }
