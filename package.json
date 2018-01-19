@@ -1,21 +1,27 @@
 {
-  "name": "serverless-cf-resource-counter",
-  "version": "0.0.6",
-  "description": "",
+  "name": "serverless-cloudformation-resource-counter",
+  "version": "0.1.0",
+  "description": "A Serverless plugin to count created resources after deployment.",
+  "keywords": [
+    "aws",
+    "cloudformation",
+    "serverless",
+    "plugin"
+  ],
   "main": "dist",
   "scripts": {
     "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drexler/serverless-cf-resource-counter.git"
+    "url": "git+https://github.com/drexler/serverless-cloudformation-resource-counter.git"
   },
-  "author": "drexler",
+  "author": "Andrew Quartey",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/drexler/serverless-cf-resource-counter/issues"
+    "url": "https://github.com/drexler/serverless-cloudformation-resource-counter/issues"
   },
-  "homepage": "https://github.com/drexler/serverless-cf-resource-counter#readme",
+  "homepage": "https://github.com/drexler/serverless-cloudformation-resource-counter#readme",
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^9.3.0",
