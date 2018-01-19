@@ -1,8 +1,18 @@
 declare interface StackResource {
-    ResourceStatus: string
-    LastUpdatedTimestamp: string
     LogicalResourceId: string
-    ResourceType: string
     PhysicalResourceId: string
-  }
+    ResourceType: string
+    LastUpdatedTimestamp: string
+    ResourceStatus: string
+}
+
+declare interface StackResourceListResponse {
+    ResponseMetadata: {
+        RequestId: string
+    }
+
+    StackResourceSummaries: StackResource[]
+}
+
+
   
