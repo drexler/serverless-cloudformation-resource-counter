@@ -35,7 +35,7 @@ export default class CloudFormationResourceCounterPlugin {
   private process() {
     Promise.resolve()
     .then(() => this.fetch()
-    ).then((res) => this.serverless.cli.log(util.format('CloudFormation resource count: %s', this.count(res)))
+    ).then((res) => this.serverless.cli.log(util.format('CloudFormation resource count: %d', this.count(res)))
     ).catch((err) => this.serverless.cli.log(util.format('Cannot count: %s!', err.message))
     );
   }
