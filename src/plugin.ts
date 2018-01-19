@@ -1,7 +1,7 @@
 
 import * as util from 'util';
 
-export default class CloudFormationResourceCounterPlugin {
+export class CloudFormationResourceCounterPlugin {
   public hooks: {};
 
   constructor(private serverless: Serverless, private options: Serverless.Options) {

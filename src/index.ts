@@ -1,3 +1,3 @@
-import Plugin from './plugin';
+import { CloudFormationResourceCounterPlugin } from './plugin';
 
-module.exports = Plugin;
+module.exports = CloudFormationResourceCounterPlugin;
