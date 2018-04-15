@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/serverless-cloudformation-resource-counter.svg)](https://www.npmjs.com/package/serverless-cloudformation-resource-counter)
 [![license](https://img.shields.io/github/license/drexler/serverless-cloudformation-resource-counter.svg)](https://github.com/drexler/serverless-cloudformation-resource-counter/blob/master/LICENSE.md)
+[![downloads](https://img.shields.io/npm/dm/serverless-cloudformation-resource-counter.svg)](https://www.npmjs.com/package/serverless-cloudformation-resource-counter)
 
 A [serverless](https://serverless.com) plugin to count the resources generated in the AWS CloudFormation stack after deployment.
 
@@ -10,11 +11,11 @@ A [serverless](https://serverless.com) plugin to count the resources generated i
 ### Install
 
 ```bash
-$ > yarn add serverless-cloudformation-resource-counter
+$ yarn add serverless-cloudformation-resource-counter
 ```
 
 ```bash
-$ > npm install serverless-cloudformation-resource-counter
+$ npm install serverless-cloudformation-resource-counter
 ```
 
 ### Configuration
