@@ -6,15 +6,15 @@ export class CloudFormationResourceCounterPlugin {
 
   constructor(private serverless: Serverless, private options: Serverless.Options) {
     this.hooks = {
-      'after:deploy:deploy': this.process.bind(this)
-    }
+      'after:deploy:deploy': this.process.bind(this),
+    };
 
   }
 
   get stackName(): string {
     return util.format('%s-%s',
       this.serverless.service.getServiceName(),
-      this.serverless.getProvider('aws').getStage()
+      this.serverless.getProvider('aws').getStage(),
     );
   }
 
@@ -24,31 +24,31 @@ export class CloudFormationResourceCounterPlugin {
       'listStackResources',
       request,
       this.serverless.getProvider('aws').getStage(),
-      this.serverless.getProvider('aws').getRegion()
+      this.serverless.getProvider('aws').getRegion(),
     );
   }
 
   private async fetchStackResources(): Promise<StackResource[]> {
-    let stackResources: StackResource[] = [];
+    const stackResources: StackResource[] = [];
     let result: StackResourceListResponse = await this.fetch({StackName: this.stackName });
     result.StackResourceSummaries.forEach((stackItem: StackResource) => {
        stackResources.push(stackItem);
     });
 
     let morePages = result.NextToken ? true : false;
-  
-    while(morePages) {
+
+    while (morePages) {
         const request = {
-           StackName: this.stackName,
-           NextToken: result.NextToken
+          NextToken: result.NextToken,
+          StackName: this.stackName,
         };
 
         result = await this.fetch(request);
         result.StackResourceSummaries.forEach((stackItem: StackResource) => {
-          stackResources.push(stackItem);
-       });
-   
-       morePages = result.NextToken ? true : false;
+            stackResources.push(stackItem);
+        });
+
+        morePages = result.NextToken ? true : false;
     }
 
     return Promise.all(stackResources);
