@@ -1,14 +1,17 @@
 
 import * as util from 'util';
+import chalk from 'chalk';
 
 export class CloudFormationResourceCounterPlugin {
   public hooks: {};
+
+  private warningThresholdOption: number;
 
   constructor(private serverless: Serverless, private options: Serverless.Options) {
     this.hooks = {
       'after:deploy:deploy': this.process.bind(this),
     };
-
+    this.warningThresholdOption = this.serverless.service.custom.warningThreshold;
   }
 
   get stackName(): string {
@@ -63,7 +66,12 @@ export class CloudFormationResourceCounterPlugin {
     Promise.resolve()
     .then(() => this.fetchStackResources())
     .then((response: StackResource[]) => {
-      const message = util.format('CloudFormation resource count: %d', this.count(response));
+      const resourceCount = this.count(response);
+      let message = util.format('CloudFormation resource count: %d', resourceCount);
+      if (this.warningThresholdOption && resourceCount >= this.warningThresholdOption) {
+        message += `\n${chalk.red('WARNING:')}\n`;
+        message += `${chalk.red('AWS CloudFormation has a hard limit of 200 resources for a deployed stack!')}\n`;
+      }
       this.serverless.cli.log(message);
     })
     .catch((error) => this.serverless.cli.log(util.format('Cannot count: %s!', error.message)));

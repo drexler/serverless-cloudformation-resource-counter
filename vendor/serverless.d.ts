@@ -43,6 +43,10 @@ declare namespace Serverless {
       provider: {
         name: string
       }
+
+      custom: {
+            warningThreshold: number
+      }
     }
   }
   
