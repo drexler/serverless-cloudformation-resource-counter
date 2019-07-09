@@ -15,10 +15,13 @@ export class CloudFormationResourceCounterPlugin {
   }
 
   get stackName(): string {
-    return util.format('%s-%s',
-      this.serverless.service.getServiceName(),
-      this.serverless.getProvider('aws').getStage(),
+    const stackName = this.serverless.getProvider('aws').naming.stackName;
+
+    return stackName || util.format('%s-%s',
+        this.serverless.service.getServiceName(),
+        this.serverless.getProvider('aws').getStage(),
     );
+           
   }
 
   private fetch(request): Promise<StackResourceListResponse> {
