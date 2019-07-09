@@ -6,6 +6,10 @@ declare namespace Serverless {
     }
     
     namespace Provider {
+
+      interface IProviderContextName {
+        stackName: string;
+      }
       class Aws {
         constructor(serverless: Serverless, options: Serverless.Options)
         
@@ -13,8 +17,9 @@ declare namespace Serverless {
         getRegion: () => string
         getServerlessDeploymentBucketName: () => string
         getStage: () => string
-  
         request: (service: string, method: string, data: {}, stage: string, region: string) => Promise<any>
+
+        naming: IProviderContextName
       }
     }
   }
