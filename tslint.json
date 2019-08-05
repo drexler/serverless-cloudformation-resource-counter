@@ -5,6 +5,7 @@
         "ordered-imports": false,
         "quotemark": [true, "single", "avoid-escape"],
         "interface-name": false,
-        "member-ordering": false
+        "member-ordering": false,
+        "object-literal-sort-keys": false
     }
 }
