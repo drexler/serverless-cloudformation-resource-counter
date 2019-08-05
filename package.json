@@ -11,13 +11,16 @@
     "main": "dist/index.js",
     "scripts": {
         "test": "node_modules/.bin/jest --coverage",
+        "report:coverage": "npm run test && codecov",
         "prettier": "prettier --write \"**/*.{js,ts,tsx,json,md}\"",
         "tslint:check": "tslint-config-prettier-check ./tslint.json",
-        "build": "tsc --project ."
+        "build": "tsc --project .",
+        "semantic-release": "semantic-release"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && npm run test"
+            "pre-commit": "lint-staged && npm run test",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
     },
     "lint-staged": {
@@ -26,9 +29,19 @@
             "git add"
         ]
     },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/drexler/serverless-cloudformation-resource-counter.git"
+        "url": "https://github.com/drexler/serverless-cloudformation-resource-counter.git"
     },
     "author": "Andrew Quartey",
     "license": "MIT",
@@ -41,14 +54,23 @@
         "chalk": "^2.4.1"
     },
     "devDependencies": {
+        "@commitlint/cli": "^8.1.0",
+        "@commitlint/config-conventional": "^7.5.0",
+        "@commitlint/prompt": "^8.1.0",
+        "@semantic-release/changelog": "^3.0.1",
+        "@semantic-release/git": "^7.0.6",
         "@types/jest": "^24.0.16",
         "@types/node": "^9.3.0",
         "@types/sinon": "^7.0.13",
         "aws-sdk-mock": "^4.5.0",
+        "codecov": "^3.1.0",
+        "commitizen": "^3.0.5",
+        "cz-conventional-changelog": "^3.0.2",
         "husky": "^3.0.2",
         "jest": "^24.8.0",
         "lint-staged": "^8.2.1",
         "prettier": "^1.18.2",
+        "semantic-release": "^15.13.19",
         "sinon": "^7.3.2",
         "ts-jest": "^24.0.2",
         "tslint": "^5.9.1",
