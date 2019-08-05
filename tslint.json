@@ -1,11 +1,10 @@
 {
     "extends": "tslint:recommended",
-     "rules": {
-         "no-console": [false, "log", "error"],
-         "ordered-imports": false,
-         "quotemark": [true,
-             "single",
-             "avoid-escape"
-         ]
-      }
- }
+    "rules": {
+        "no-console": [false, "log", "error"],
+        "ordered-imports": false,
+        "quotemark": [true, "single", "avoid-escape"],
+        "interface-name": false,
+        "member-ordering": false
+    }
+}
