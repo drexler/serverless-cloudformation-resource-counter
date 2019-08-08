@@ -60,6 +60,10 @@ const constructPlugin = (pluginOptions, useDefaultStackName?: boolean) => {
         delete serverless.service.provider.stackName;
     }
 
+    if (!pluginOptions.warningThreshold) {
+        delete serverless.service.custom;
+    }
+
     return new SlsCloudformationResourceCounter(serverless, options);
 };
 

@@ -94,7 +94,9 @@ class SlsCloudformationResourceCounter {
      */
     public initializeVariables(): void {
         const credentials = this.serverless.providers.aws.getCredentials();
-        this.warningThreshold = this.serverless.service.custom.warningThreshold;
+        if (this.serverless.service.custom) {
+            this.warningThreshold = this.serverless.service.custom.warningThreshold;
+        }
         this.awsRegion = this.serverless.providers.aws.getRegion();
         this.cloudformation = new this.serverless.providers.aws.sdk.CloudFormation({
             credentials,
