@@ -1,33 +1,102 @@
 {
-  "name": "serverless-cloudformation-resource-counter",
-  "version": "0.3.0",
-  "description": "A Serverless plugin to count created resources after deployment.",
-  "keywords": [
-    "aws",
-    "cloudformation",
-    "serverless",
-    "plugin"
-  ],
-  "main": "dist",
-  "scripts": {
-    "build": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/drexler/serverless-cloudformation-resource-counter.git"
-  },
-  "author": "Andrew Quartey",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/drexler/serverless-cloudformation-resource-counter/issues"
-  },
-  "homepage": "https://github.com/drexler/serverless-cloudformation-resource-counter#readme",
-  "dependencies": {
-    "chalk": "^2.4.1"
-  },
-  "devDependencies": {
-    "@types/node": "^9.3.0",
-    "tslint": "^5.9.1",
-    "typescript": "^2.6.2"
-  }
+    "name": "serverless-cloudformation-resource-counter",
+    "version": "0.3.0",
+    "description": "A Serverless plugin to count created resources after deployment.",
+    "keywords": [
+        "aws",
+        "cloudformation",
+        "serverless",
+        "plugin"
+    ],
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "node_modules/.bin/jest --coverage",
+        "report:coverage": "npm run test && codecov",
+        "prettier": "prettier --write \"**/*.{js,ts,tsx,json,md}\"",
+        "tslint:check": "tslint-config-prettier-check ./tslint.json",
+        "build": "tsc --project .",
+        "semantic-release": "semantic-release"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && npm run test",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts,tsx,json,md}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/drexler/serverless-cloudformation-resource-counter.git"
+    },
+    "author": "Andrew Quartey",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/drexler/serverless-cloudformation-resource-counter/issues"
+    },
+    "homepage": "https://github.com/drexler/serverless-cloudformation-resource-counter#readme",
+    "dependencies": {
+        "aws-sdk": "^2.505.0",
+        "chalk": "^2.4.1"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.1.0",
+        "@commitlint/config-conventional": "^7.5.0",
+        "@commitlint/prompt": "^8.1.0",
+        "@semantic-release/changelog": "^3.0.1",
+        "@semantic-release/git": "^7.0.6",
+        "@types/jest": "^24.0.16",
+        "@types/node": "^9.3.0",
+        "@types/sinon": "^7.0.13",
+        "aws-sdk-mock": "^4.5.0",
+        "codecov": "^3.1.0",
+        "commitizen": "^3.0.5",
+        "cz-conventional-changelog": "^3.0.2",
+        "husky": "^3.0.2",
+        "jest": "^24.8.0",
+        "lint-staged": "^8.2.1",
+        "prettier": "^1.18.2",
+        "semantic-release": "^15.13.19",
+        "sinon": "^7.3.2",
+        "ts-jest": "^24.0.2",
+        "tslint": "^5.9.1",
+        "tslint-config-prettier": "^1.18.0",
+        "typescript": "^3.3.3"
+    },
+    "jest": {
+        "transform": {
+            ".(ts)": "ts-jest"
+        },
+        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts?|js?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "/test/"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 95,
+                "functions": 95,
+                "lines": 95,
+                "statements": 95
+            }
+        }
+    }
 }
