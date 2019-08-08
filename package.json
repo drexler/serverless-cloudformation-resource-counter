@@ -1,6 +1,6 @@
 {
     "name": "serverless-cloudformation-resource-counter",
-    "version": "0.4.0",
+    "version": "0.3.0",
     "description": "A Serverless plugin to count created resources after deployment.",
     "keywords": [
         "aws",
@@ -50,7 +50,7 @@
     },
     "homepage": "https://github.com/drexler/serverless-cloudformation-resource-counter#readme",
     "dependencies": {
-        "aws-sdk": "^2.503.0",
+        "aws-sdk": "^2.505.0",
         "chalk": "^2.4.1"
     },
     "devDependencies": {

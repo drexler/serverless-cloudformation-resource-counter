@@ -75,7 +75,6 @@ describe('Resource Counter Plugin', () => {
 
         const { credentials, region } = plugin.cloudformation.config;
         expect(credentials.accessKeyId).toEqual(testAwsCredentials.accessKeyId);
-        expect(credentials.secretAccessKey).toEqual(testAwsCredentials.secretAccessKey);
         expect(credentials.sessionToken).toEqual(testAwsCredentials.sessionToken);
         expect(region).toEqual(testRegion);
     });
