@@ -1,1 +1,8 @@
 !dist
+**/*.ts
+tslint.json
+tsconfig.json
+.travis.yml
+.releaserc
+.prettierrc.yml
+coverage
