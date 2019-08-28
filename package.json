@@ -9,6 +9,11 @@
         "plugin"
     ],
     "main": "dist/index.js",
+    "files": [
+        "*.js",
+        "*.json",
+        "dist/*.js"
+    ],
     "scripts": {
         "test": "node_modules/.bin/jest --coverage",
         "report:coverage": "npm run test && codecov",
