@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/drexler/serverless-cloudformation-resource-counter/compare/v1.0.0...v1.0.1) (2019-08-28)
+
+
+### Bug Fixes
+
+* fix artifact generation ([3a9c5a7](https://github.com/drexler/serverless-cloudformation-resource-counter/commit/3a9c5a7))
+* fix artifact generation ([#12](https://github.com/drexler/serverless-cloudformation-resource-counter/issues/12)) ([7a87be2](https://github.com/drexler/serverless-cloudformation-resource-counter/commit/7a87be2))
+
 # 1.0.0 (2019-08-08)
 
 
