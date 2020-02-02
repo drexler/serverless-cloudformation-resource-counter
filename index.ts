@@ -7,7 +7,6 @@ import { Serverless, ServerlessOptions, StackResource, StackResourceListResponse
 class SlsCloudformationResourceCounter {
     // AWS SDK resources
     public cloudformation: any;
-    public awsRegion: string;
 
     // Serverless specific properties
     public hooks: object;
@@ -97,6 +96,7 @@ class SlsCloudformationResourceCounter {
             this.warningThreshold = this.serverless.service.custom.warningThreshold;
         }
         const credentials = this.serverless.providers.aws.getCredentials();
+        credentials.region = this.serverless.providers.aws.getRegion();
         this.cloudformation = new this.serverless.providers.aws.sdk.CloudFormation(credentials);
     }
 
