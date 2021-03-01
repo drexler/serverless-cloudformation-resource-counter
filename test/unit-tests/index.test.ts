@@ -174,7 +174,7 @@ describe('Resource Counter Plugin', () => {
             let expectedResourceCountMessage = `CloudFormation resources count: ${itemCount}`;
             expectedResourceCountMessage += `\n${chalk.red('WARNING:')}\n`;
             expectedResourceCountMessage += `${chalk.red(
-                'AWS CloudFormation has a hard limit of 200 resources for a deployed stack!',
+                'AWS CloudFormation has a hard limit of 500 resources for a deployed stack!',
             )}\n`;
 
             expect(consoleOutput.length).toBe(1);

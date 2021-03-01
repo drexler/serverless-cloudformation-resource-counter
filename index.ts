@@ -4,6 +4,8 @@ import * as util from 'util';
 import chalk from 'chalk';
 import { Serverless, ServerlessOptions, StackResource, StackResourceListResponse } from './types';
 
+const MAX_RESOURCES_PER_CLOUDFORMATION_STACK = 500;
+
 class SlsCloudformationResourceCounter {
     // AWS SDK resources
     public cloudformation: any;
@@ -48,10 +50,11 @@ class SlsCloudformationResourceCounter {
      * @param count resource count to display
      */
     private displayResourceCount(count: number): void {
+        const limitMessage = `AWS CloudFormation has a hard limit of ${MAX_RESOURCES_PER_CLOUDFORMATION_STACK} resources for a deployed stack!`;
         let message = util.format('CloudFormation resources count: %d', count);
         if (this.warningThreshold && count >= this.warningThreshold) {
             message += `\n${chalk.red('WARNING:')}\n`;
-            message += `${chalk.red('AWS CloudFormation has a hard limit of 200 resources for a deployed stack!')}\n`;
+            message += `${chalk.red(limitMessage)}\n`;
         }
         this.serverless.cli.log(message);
     }
