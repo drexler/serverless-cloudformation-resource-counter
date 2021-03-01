@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/drexler/serverless-cloudformation-resource-counter/compare/v1.0.3...v1.1.0) (2021-03-01)
+
+
+### Features
+
+* update resource count limit ([1b622ca](https://github.com/drexler/serverless-cloudformation-resource-counter/commit/1b622ca223677da81ce4ddd4dcc32214c5fa04f7))
+
 ## [1.0.3](https://github.com/drexler/serverless-cloudformation-resource-counter/compare/v1.0.2...v1.0.3) (2020-02-02)
 
 
