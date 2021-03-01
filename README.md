@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/drexler/serverless-cloudformation-resource-counter/branch/master/graph/badge.svg)](https://codecov.io/gh/drexler/serverless-cloudformation-resource-counter)
 [![Build Status](https://travis-ci.org/drexler/serverless-cloudformation-resource-counter.svg?branch=master)](https://travis-ci.org/drexler/serverless-cloudformation-resource-counter.svg?branch=master)
 
-A [serverless](https://serverless.com) plugin to count the resources generated in the AWS CloudFormation stack after deployment. It provides an option to warn users when a preset number of resources have been created. This is particularly useful when trying to avoid the 200 resource limit set by CloudFormation.
+A [serverless](https://serverless.com) plugin to count the resources generated in the AWS CloudFormation stack after deployment. It provides an option to warn users when a preset number of resources have been created. This is particularly useful when trying to avoid the 500 resource limit set by CloudFormation.
 
 ## Usage
 
