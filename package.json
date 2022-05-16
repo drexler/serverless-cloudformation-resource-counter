@@ -59,7 +59,7 @@
         "chalk": "^2.4.1"
     },
     "devDependencies": {
-        "@commitlint/cli": "^8.1.0",
+        "@commitlint/cli": "^17.0.0",
         "@commitlint/config-conventional": "^7.5.0",
         "@commitlint/prompt": "^8.1.0",
         "@semantic-release/changelog": "^3.0.1",
