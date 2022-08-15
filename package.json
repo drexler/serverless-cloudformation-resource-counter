@@ -65,7 +65,7 @@
         "@semantic-release/changelog": "^3.0.1",
         "@semantic-release/git": "^7.0.6",
         "@types/jest": "^24.0.16",
-        "@types/node": "^9.3.0",
+        "@types/node": "^18.7.4",
         "@types/sinon": "^7.0.13",
         "aws-sdk-mock": "^4.5.0",
         "codecov": "^3.1.0",
